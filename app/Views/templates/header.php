@@ -3,31 +3,30 @@
 <head>
 	<meta charset="UTF-8">
 	<title><?php echo($title)?></title>
-	<meta name="description" content="The small framework with powerful features">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+    <script src="https://kit.fontawesome.com/062265acee.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 </head>
 <body>
 <!-- HEADER: MENU + HEROE SECTION -->
 <header>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="home">LOGO</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ms-auto">
-                <a class="nav-item nav-link" href="barbershops">Barbershops</a>
-                <a class="nav-item nav-link" href="login">Login</a>
-                <a class="nav-item nav-link" href="register">Register</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a href="home" class="navbar-brand">Brand</a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto">
+                    <a href="barbershops" class="nav-item nav-link">Barbershops</a>
+                    <a href="login" class="nav-item nav-link">Login</a>
+                    <a href="register" class="nav-item nav-link">Register</a>
+                </div>
             </div>
         </div>
-    </nav>
-
-
 
 </header>

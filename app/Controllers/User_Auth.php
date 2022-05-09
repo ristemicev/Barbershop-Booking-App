@@ -53,4 +53,58 @@ class User_Auth extends BaseController
         }
 
     }
+
+    public function login()
+    {
+        $session = session();
+        $userModel = new UserModel();
+        $email = $this->request->getVar('email');
+        $password = $this->request->getVar('password');
+
+        $data = $userModel->where('email', $email)->first();
+
+        if ($data) {
+            $pass = $data['password'];
+            $authenticatePassword = password_verify($password, $pass);
+            if ($authenticatePassword) {
+                $ses_data = [
+                    'id' => $data['id'],
+                    'name' => $data['name'],
+                    'surname' => $data['surname'],
+                    'email' => $data['email'],
+                    'isLoggedIn' => TRUE
+                ];
+                $session->set($ses_data);
+                return "ok";
+            } else {
+                $session->setFlashdata('msg', 'Password is incorrect.');
+                return "Password is incorrect.";
+            }
+        } else {
+            $session->setFlashdata('msg', 'Email does not exist.');
+            return "Email does not exist.";
+        }
+    }
+
+    public function logout()
+    {
+        // Removing session data
+        $sess_array = array(
+            'username' => ''
+        );
+        $this->session->unset_userdata('logged_in', $sess_array);
+        $data['message_display'] = 'Successfully Logout';
+        $this->load->view('templates/header', $data);
+        $this->load->view('user_authentication/login_form', $data);
+        $this->load->view('templates/footer');
+    }
+
+
+    public function dashboard() {
+
+        $data['title'] = "Profile";
+        echo view('templates/header', $data);
+        echo view('user_auth/profile', $data);
+        echo view('templates/footer', $data);
+    }
 }

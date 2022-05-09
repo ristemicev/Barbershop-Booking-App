@@ -1,5 +1,5 @@
 <div class="bg-register">
-    <div class="container grayed" id="zver sum">
+    <div class="container grayed">
         <div class="container register-sign">
             Login
         </div>
@@ -13,7 +13,7 @@
             <div class="form-group mb-3">
                 <input type="password" name="password" placeholder="Password" class="form-control">
             </div>
-            <button type="submit" class="dugme" id="prati">SIGN UP
+            <button type="submit" class="dugme" id="prati">SIGN IN
             </button>
         </form>
         <div class="d-grid">
@@ -21,3 +21,34 @@
         </div>
     </div>
 </div>
+
+<script>
+
+    $(function () {
+
+        $('form').on('submit', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: 'post',
+                url: '/user_auth/login',
+                dataType: "html",
+                data: $('form').serialize(),
+                success: function (response) {
+                    if (response==="ok") {
+                        alert("Login Successful!");
+                        window.location = "/profile"
+                    } else {
+                        document.getElementById("greski").hidden = false;
+                        $('#greski').html(response);
+                    }
+                },
+                error: function (result) {
+                    $('body').html("err");
+                },
+            });
+
+        });
+
+    });
+</script>

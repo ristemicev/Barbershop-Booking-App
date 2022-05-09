@@ -32,8 +32,9 @@ $routes->setAutoRoute(false);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Pages::index');
+$routes->get('/profile', 'User_Auth::dashboard',['filter' => 'auth']);
 $routes->match(['get', 'post'], 'user_auth/register', 'User_Auth::register');
-$routes->get('user_auth/register','User_Auth::register');
+$routes->match(['get', 'post'], 'user_auth/login', 'User_Auth::login');
 $routes->get('login', 'User_Auth::loginpage');
 $routes->get('register', 'User_Auth::registerpage');
 $routes->get('(:any)', 'Pages::view/$1');

@@ -17,7 +17,9 @@ class Pages extends BaseController {
         }
 
         $data['title'] = ucfirst($page); // Capitalize the first letter
-
+        if(session()->get('isLoggedIn') === null) {
+            session()->set('isLoggedIn', FALSE);
+        }
         echo view('templates/header', $data);
         echo view('pages/' . $page, $data);
         echo view('templates/footer', $data);

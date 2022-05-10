@@ -10,7 +10,9 @@ class User_Auth extends BaseController
 
     public function loginpage()
     {
-
+        if(session()->get('isLoggedIn') === null) {
+            session()->set('isLoggedIn', FALSE);
+        }
         $data['title'] = "Login";
         echo view('templates/header', $data);
         echo view('user_auth/login', $data);
@@ -20,6 +22,9 @@ class User_Auth extends BaseController
 
     public function registerpage($data = null)
     {
+        if(session()->get('isLoggedIn') === null) {
+            session()->set('isLoggedIn', FALSE);
+        }
 
         $data['title'] = "Register";
         echo view('templates/header', $data);
@@ -102,7 +107,8 @@ class User_Auth extends BaseController
                     'name' => $data['name'],
                     'surname' => $data['surname'],
                     'email' => $data['email'],
-                    'isLoggedIn' => TRUE
+                    'isLoggedIn' => TRUE,
+                    'type' => 'u',
                 ];
                 $session->set($ses_data);
                 return "ok";
@@ -119,7 +125,8 @@ class User_Auth extends BaseController
                     'name' => $data2['name'],
                     'address' => $data2['address'],
                     'email' => $data2['email'],
-                    'isLoggedIn' => TRUE
+                    'isLoggedIn' => TRUE,
+                    'type' => 'b',
                 ];
                 $session->set($ses_data);
                 return "ok";
@@ -141,9 +148,9 @@ class User_Auth extends BaseController
             'name' => '',
             'surname' => '',
             'email' => '',
-            'isLoggedIn' => FALSE
+            'isLoggedIn' => FALSE,
+            'type' => '',
         ];
-        session()->destroy();
         session()->set($ses_data);
         echo 'Successfully Logout';
     }

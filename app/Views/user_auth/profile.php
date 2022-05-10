@@ -1,5 +1,13 @@
 <div>
-    Welcome <?php echo $ses_data['name']; echo " "; echo $ses_data['surname'];?>
+    <?php if ($ses_data['type'] == 'u') {
+        echo "Welcome ";
+        echo $ses_data['name'];
+        echo " ";
+        echo $ses_data['surname'];
+    } else
+        echo "Welcome ";
+        echo $ses_data['name'];
+        ?>
 </div>
 <button type="submit" class="dugme" id="prati">LOGOUT
 </button>

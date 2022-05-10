@@ -5,10 +5,10 @@
     <div class="container">
         <div class="row justify-content-between home-buttons">
             <div class="col-4 home-button">
-                Register your barbershop
+                <a href="register">Register your barbershop</a>
             </div>
             <div class="col-4 home-button">
-                Explore our barbershops
+                <a href="barberhsops">Explore our barbershops</a>
             </div>
         </div>
     </div>

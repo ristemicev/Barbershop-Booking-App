@@ -7,10 +7,25 @@
         </div>
         <form action="" method="post">
             <div class="form-group mb-3">
-                <input type="text" name="name" placeholder="Name" value="<?= set_value('name') ?>" class="form-control">
+                Register as:
+                <input class="form-check-input" type="radio" name="flexRadioDefault1" value="user" id="rb1" checked onchange="hideA(this)">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    User
+                </label>
+                <input class="form-check-input" type="radio" name="flexRadioDefault1" value="barbershop" onchange="hideB(this)" id="rb2">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Barbershop
+                </label>
             </div>
             <div class="form-group mb-3">
+                <input type="text" name="name" placeholder="Name" value="<?= set_value('name') ?>" class="form-control">
+            </div>
+            <div class="form-group mb-3" id="surn">
                 <input type="text" name="surname" placeholder="Surname" value="<?= set_value('surname') ?>"
+                       class="form-control">
+            </div>
+            <div class="form-group mb-3" id="addr" hidden>
+                <input type="text" name="address" placeholder="Address" value="<?= set_value('address') ?>"
                        class="form-control">
             </div>
             <div class="form-group mb-3">
@@ -36,7 +51,6 @@
 <script>
 
     $(function () {
-
         $('form').on('submit', function (e) {
             e.preventDefault();
 
@@ -62,5 +76,20 @@
         });
 
     });
+
+    function hideA(x) {
+        if (x.checked) {
+            document.getElementById("surn").style.display="inherit";
+            document.getElementById("addr").style.display="none";
+        }
+    }
+
+    function hideB(x) {
+        if (x.checked) {
+            document.getElementById("addr").hidden = false;
+            document.getElementById("surn").style.display="none";
+            document.getElementById("addr").style.display="inherit";
+        }
+    }
 </script>
 

@@ -11,4 +11,13 @@ class BarbershopModel extends Model{
         'address',
         'password',
     ];
+
+    public function getAll() {
+
+        $query = 'select id, name, address, email from barbershop';
+        $result = $this->db->query($query);
+
+        return $result->getResultArray();
+
+    }
 }

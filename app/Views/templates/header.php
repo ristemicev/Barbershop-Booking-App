@@ -30,10 +30,35 @@
                         echo '<a href="login" class="nav-item nav-link">Login</a>
                               <a href="register" class="nav-item nav-link">Register</a>';
                     else echo '<a href="profile" class="nav-item nav-link">Profile</a>
-                               <a href="" class="nav-item nav-link">Logout</a>';
+                               <a href="" id="logout" class="nav-item nav-link">Logout</a>';
                     ?>
                 </div>
             </div>
         </div>
 
 </header>
+
+<script>
+
+    $(function () {
+
+        $('#logout').on('click', function (e) {
+            e.preventDefault();
+            console.log("click")
+            $.ajax({
+                type: 'post',
+                url: '/user_auth/logout',
+                dataType: "html",
+                success: function (response) {
+                    alert(response);
+                    window.location = "/login"
+                },
+                error: function (result) {
+                    $('body').html("err");
+                },
+            });
+
+        });
+
+    });
+</script>

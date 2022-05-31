@@ -63,6 +63,10 @@ html, body {
     font-size: 40px;
 }
 
+.options {
+    text-align: right;
+}
+
 footer {
     background-color: rgb(33,37,41);
     color: white;

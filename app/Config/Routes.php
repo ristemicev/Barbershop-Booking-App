@@ -33,12 +33,17 @@ $routes->setAutoRoute(false);
 // route since we don't have to scan directories.
 $routes->get('/', 'Pages::index');
 $routes->get('barbershops', 'Features::index');
-$routes->get('profile', 'User_Auth::dashboard',['filter' => 'auth']);
+$routes->get('afterLogin', 'Features::afterLogin',['filter' => 'auth']);
+$routes->get('profile', 'Features::showProfile',['filter' => 'auth']);
+$routes->get('specific/(:segment)', 'Features::displaySpecific/$1');
+$routes->match(['get', 'post'], 'profile/insert', 'Features::insert',['filter' => 'auth']);
+$routes->match(['get', 'post'], 'features/store', 'Features::store',['filter' => 'auth']);
+$routes->match(['get', 'post'], 'profile/delete', 'Features::delete',['filter' => 'auth']);
+$routes->match(['get', 'post'], 'profile/edit', 'Features::edit',['filter' => 'auth']);
 $routes->match(['get', 'post'], 'user_auth/register', 'User_Auth::register');
 $routes->match(['get', 'post'], 'user_auth/login', 'User_Auth::login');
 $routes->match(['get', 'post'], 'user_auth/logout', 'User_Auth::logout');
 $routes->get('login', 'User_Auth::loginpage');
-$routes->get('bregister', 'User_Auth::register2page');
 $routes->get('register', 'User_Auth::registerpage');
 $routes->get('(:any)', 'Pages::view/$1');
 

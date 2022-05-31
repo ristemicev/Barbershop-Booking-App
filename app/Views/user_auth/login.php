@@ -37,7 +37,7 @@
                 success: function (response) {
                     if (response==="ok") {
                         alert("Login Successful!");
-                        window.location = "/profile"
+                        window.location = "/afterLogin"
                     } else {
                         document.getElementById("greski").hidden = false;
                         $('#greski').html(response);

@@ -4,13 +4,14 @@ namespace App\Controllers;
 
 use App\Models\UserModel;
 use App\Models\BarbershopModel;
+use App\Controllers\Features;
 
 class User_Auth extends BaseController
 {
 
     public function loginpage()
     {
-        if(session()->get('isLoggedIn') === null) {
+        if (session()->get('isLoggedIn') === null) {
             session()->set('isLoggedIn', FALSE);
         }
         $data['title'] = "Login";
@@ -22,7 +23,7 @@ class User_Auth extends BaseController
 
     public function registerpage($data = null)
     {
-        if(session()->get('isLoggedIn') === null) {
+        if (session()->get('isLoggedIn') === null) {
             session()->set('isLoggedIn', FALSE);
         }
 
@@ -155,13 +156,4 @@ class User_Auth extends BaseController
         echo 'Successfully Logout';
     }
 
-
-    public function dashboard()
-    {
-        $data['title'] = "Profile";
-        $data['ses_data'] = session()->get();
-        echo view('templates/header', $data);
-        echo view('user_auth/profile', $data);
-        echo view('templates/footer', $data);
-    }
 }

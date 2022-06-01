@@ -31,11 +31,14 @@ $routes->setAutoRoute(false);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
 $routes->get('/', 'Pages::index');
 $routes->get('barbershops', 'Features::index');
+$routes->get('(:any)/barbershops', 'Features::index');
 $routes->get('afterLogin', 'Features::afterLogin',['filter' => 'auth']);
 $routes->get('profile', 'Features::showProfile',['filter' => 'auth']);
 $routes->get('specific/(:segment)', 'Features::displaySpecific/$1');
+$routes->match(['get','post'],'search','Features::search');
 $routes->match(['get', 'post'], 'profile/insert', 'Features::insert',['filter' => 'auth']);
 $routes->match(['get', 'post'], 'features/store', 'Features::store',['filter' => 'auth']);
 $routes->match(['get', 'post'], 'profile/delete', 'Features::delete',['filter' => 'auth']);

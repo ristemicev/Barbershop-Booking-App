@@ -1,4 +1,3 @@
-<?php var_dump($barbershops); ?>
 <div class="container text-center">
     <h1>Barbershops</h1>
 </div>
@@ -26,11 +25,18 @@
     <!--end of col-->
 </div>
 
-<?php foreach ($barbershops as $barbershop) : ?>
-    <a class="container text-center">
+<?php foreach ($barbershops['result1'] as $barbershop) : ?>
+    <div class="container text-center">
         <a class="row" href="specific/<?php echo $barbershop['id']?>">
-            <div class="col-sm">
+            <div class="col-sm ">
+             <?php foreach ($barbershops['result2'] as $image) : ?>
 
+                <?php if ($barbershop['id'] == $image['b_id']) : ?>
+                    <img src="/uploads/<?php echo $image['name']?>" class="img-fluid" height="200" width="200">
+                 <?php else: ?>
+                    <img src="/uploads/no_image.png" class="img-fluid" height="200" width="200">
+                 <?php endif; ?>
+                <?php endforeach; ?>
             </div>
             <div class="col-sm">
                 <p><?php echo $barbershop['name']; ?></p>
@@ -39,6 +45,37 @@
                 <p><?php echo $barbershop['address']; ?></p>
             </div>
         </a>
-    </a>
+    </div>
     <hr>
 <?php endforeach; ?>
+
+
+<script>
+    $(document).ready(function () {
+
+        $('#searchbutton').click(function (event, value, caption) {
+            var text = $("#textarea").val();
+            if (text == '') {
+                alert("Please review your search parameters");
+            } else {
+                $.ajax({
+                    url: 'search',
+                    type: 'post',
+                    dataType: "html",
+                    data: {
+                        text: text,
+                    },
+                    success: function (response) {
+                        $('body').html(response);
+                    },
+                    error: function (result) {
+                        $('body').html("err");
+                    },
+                    beforeSend: function (d) {
+                        $('body').html("Searching...");
+                    }
+                });
+            }
+        })
+    });
+</script>

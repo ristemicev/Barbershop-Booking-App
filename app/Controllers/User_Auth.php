@@ -64,7 +64,7 @@ class User_Auth extends BaseController
             $rules = [
                 'name' => 'required|min_length[2]|max_length[50]',
                 'address' => 'required|min_length[4]|max_length[100]',
-                'email' => 'required|min_length[4]|max_length[100]|valid_email|is_unique[user.email]',
+                'email' => 'required|min_length[4]|max_length[100]|valid_email|is_unique[barbershop.email]',
                 'password' => 'required|min_length[4]|max_length[50]',
                 'confirmpassword' => 'matches[password]'
             ];

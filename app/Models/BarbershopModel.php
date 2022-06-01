@@ -15,9 +15,13 @@ class BarbershopModel extends Model{
     public function getAll() {
 
         $query = 'select id, name, address, email from barbershop';
-        $result = $this->db->query($query);
+        $query2 = 'select * from images group by b_id';
 
-        return $result->getResultArray();
+
+        $data['result1'] = $this->db->query($query)->getResultArray();
+        $data['result2'] = $this->db->query($query2)->getResultArray();
+
+        return $data;
 
     }
 
@@ -37,5 +41,18 @@ class BarbershopModel extends Model{
 
         return $barbershop;
     }
+
+    public function search($keyword)
+    {
+        $query = "select id, name, address, email from barbershop where name like '%" . $keyword . "%' or address like '%" . $keyword . "%'";
+        $query2 = 'select * from images group by b_id';
+
+        $data['result1'] = $this->db->query($query)->getResultArray();
+        $data['result2'] = $this->db->query($query2)->getResultArray();
+
+        return $data;
+
+    }
+
 
 }

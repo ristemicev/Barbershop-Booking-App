@@ -24,13 +24,17 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto">
-                    <a href="barbershops" class="nav-item nav-link">Barbershops</a>
+                    <a href="http://localhost:8080/barbershops" class="nav-item nav-link">Barbershops</a>
                     <?php
                     if (session()->get('isLoggedIn') == FALSE)
-                        echo '<a href="login" class="nav-item nav-link">Login</a>
-                              <a href="register" class="nav-item nav-link">Register</a>';
-                    else echo '<a href="profile" class="nav-item nav-link">Profile</a>
-                               <a href="" id="logout" class="nav-item nav-link">Logout</a>';
+                        echo '<a href="http://localhost:8080/login" class="nav-item nav-link">Login</a>
+                              <a href="http://localhost:8080/register" class="nav-item nav-link">Register</a>';
+                    else {
+                        if (session()->get('type') === 'b') {
+                            echo '<a href="http://localhost:8080/profile" class="nav-item nav-link">Profile</a>';
+                        }
+                        echo '<a href="" id="logout" class="nav-item nav-link">Logout</a>';
+                    }
                     ?>
                 </div>
             </div>

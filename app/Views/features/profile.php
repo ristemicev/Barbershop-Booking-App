@@ -1,4 +1,4 @@
-    <div class="container text-center">
+<div class="container text-center">
     <h1>Edit your Barbershop</h1>
 </div>
 <div class="container-fluid text-center">
@@ -60,10 +60,9 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2794.125903960276!2d13.729093214953426!3d45.54779273588367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477b6894387da3ef%3A0x57e09b3124f1685b!2sTrg%20Brolo%2C%206000%20Koper!5e0!3m2!1sen!2ssi!4v1653481924385!5m2!1sen!2ssi"
                     width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update_lang"
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update_addr"
                     id="change_lang">Update Address
             </button>
-            -
         </div>
     </div>
 </div>
@@ -291,6 +290,43 @@
                         <button class="btn btn-success">Submit</button>
                     </div>
                     <div class="col-md-5"></div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-dialog-scrollable" id="update_addr" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Address</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <?php if (isset($barbershop['result1'][0]['address'])) {
+                    echo $barbershop['result1'][0]['address'];
+                }
+                ?>
+            </div>
+            <div class="text-center">
+                <button type="button" class="btn btn-secondary addNew" id="addButton_addr">Add New</button>
+            </div>
+            <div class="alert alert-danger" id="greski_addr" hidden>
+            </div>
+            <div class="forma text-center" id="updateForm_addr" hidden>
+                <form action="" method="post" id="addr">
+                    <div class="form-group mb-3">
+                        <input type="text" name="address" placeholder="Address"
+                               value="<?= set_value('address') ?>"
+                               class="form-control">
+                    </div>
+                    <button type="button" class="btn btn-primary prati" id="prati_addr">Add</button>
                 </form>
             </div>
             <div class="modal-footer">

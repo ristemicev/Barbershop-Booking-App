@@ -7,6 +7,7 @@ use App\Models\DescriptionModel;
 use App\Models\LanguagesModel;
 use App\Models\ServicesModel;
 use App\Models\ImagesModel;
+use App\Models\AppointmentModel;
 
 class Features extends BaseController
 {
@@ -21,11 +22,12 @@ class Features extends BaseController
         echo view('templates/footer', $data);
     }
 
-    public function display($data) {
+    public function display($data)
+    {
         $data['title'] = 'Barbershops';
         echo view('templates/header', $data);
         echo view('features/barbershops', ['data' => $data]);
-        echo view('templates/footer',$data);
+        echo view('templates/footer', $data);
     }
 
     public function afterLogin()
@@ -81,8 +83,7 @@ class Features extends BaseController
                 $data['validation'] = $this->validator;
                 return $data['validation']->listErrors();
             }
-        }
-        elseif ($type === "desc") {
+        } elseif ($type === "desc") {
             $rules = [
                 'description' => 'required',
             ];
@@ -112,8 +113,7 @@ class Features extends BaseController
                 return $data['validation']->listErrors();
             }
 
-        }
-        elseif ($type === "lang") {
+        } elseif ($type === "lang") {
 
             $rules = [
                 'language' => 'required',
@@ -134,8 +134,7 @@ class Features extends BaseController
                 $data['validation'] = $this->validator;
                 return $data['validation']->listErrors();
             }
-        }
-        elseif ($type === "addr") {
+        } elseif ($type === "addr") {
 
             $rules = [
                 'address' => 'required',
@@ -279,7 +278,8 @@ class Features extends BaseController
         echo view('templates/footer', $data);
     }
 
-    public function search () {
+    public function search()
+    {
 
         $barbershopModel = new BarbershopModel();
 
@@ -291,4 +291,88 @@ class Features extends BaseController
 
         echo $response;
     }
+
+    public function bookApp($id)
+    {
+        $barbershopModel = new BarbershopModel();
+        $data['barbershop'] = $barbershopModel->showEverything($id);
+
+        $data['title'] = "Book Appointment";
+        echo view('templates/header', $data);
+        echo view('features/appointments', $data);
+        echo view('templates/footer', $data);
+    }
+
+    public function checkAvailable()
+    {
+
+        $barbershopModel = new BarbershopModel();
+        $id = $this->request->getVar('id');
+        $date = $this->request->getVar('date');
+
+        $taken = $barbershopModel->getAllAppointments($id, $date);
+
+        $workingHours = array();
+        // Take input day then display
+
+        for ($i = 8; $i <= 20; $i++) {
+            for ($j = 1; $j <= 2; $j++) {
+                if ($j == 1) {
+                    $workingHours[] = "$i:00";
+                } else {
+                    $workingHours[] = "$i:30";
+                }
+            }
+        }
+
+        $skip = FALSE;
+
+        $availableHours = array();
+
+        for ($i = 0; $i < count($workingHours); $i++) {
+            for ($j = 0; $j < count($taken); $j++) {
+                if ($taken[$j]["time"] == $workingHours[$i]) $skip = TRUE;
+            }
+            if ($skip == TRUE) {
+                $skip = FALSE;
+                continue;
+            }
+            $availableHours[] = $workingHours[$i];
+        }
+
+        return $this->response->setJSON($availableHours);
+
+    }
+
+    public function getInfo()
+    {
+
+        $serviceModel = new ServicesModel();
+        $id = $this->request->getVar('id');
+
+        $response = $serviceModel->getInfo($id);
+
+        return $this->response->setJSON($response);
+
+    }
+
+    public function book()
+    {
+
+        $appointmentModel = new AppointmentModel();
+
+        $data = [
+            'b_id' => $this->request->getVar('b_id'),
+            'u_id' => $this->request->getVar('u_id'),
+            'date' => $this->request->getVar('date'),
+            'time' => $this->request->getVar('time'),
+            's_id' => $this->request->getVar('s_id'),
+        ];
+
+        $appointmentModel->save($data);
+
+        echo "ok";
+
+    }
+
 }

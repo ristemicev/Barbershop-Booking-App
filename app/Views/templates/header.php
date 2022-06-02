@@ -18,7 +18,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a href="home" class="navbar-brand">Brand</a>
+            <a href="http://localhost:8080/home" class="navbar-brand">Brand</a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>

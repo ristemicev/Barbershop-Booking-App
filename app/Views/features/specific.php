@@ -48,7 +48,7 @@ $index2 = 0; ?>
     </div>
 </div>
 
-<div class="container">
+<div class="container-fluid">
     <div class="row text-center">
         <div class="col-md-6">
             <h5>Current Services</h5>
@@ -70,7 +70,7 @@ $index2 = 0; ?>
         </div>
     </div>
 </div>
-<div class="container">
+<div class="container-fluid">
     <div class="row text-center">
         <div class="col-md-6">
             <h5>Supported Languages</h5>
@@ -90,10 +90,15 @@ $index2 = 0; ?>
         </div>
     </div>
 </div>
-<!-- Geoloc and additional test -->
-<div class="container"></div>
-<div class="googlemaps"></div>
-<div class="additText"></div>
+<div class="container-fluid text-center">
+    <button type="button" class="btn btn-secondary btn-lg col-4 book" id="<?php echo $barbershop['result1'][0]['id']?>">Book an appointment</button>
 </div>
 
-
+<script>
+    $(document).ready(function () {
+      $('.book').on('click', function () {
+          const id = this.id;
+          location.href = '/appointments/' + id;
+      })
+    });
+</script>

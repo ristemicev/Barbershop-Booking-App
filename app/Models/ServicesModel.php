@@ -14,4 +14,12 @@ class ServicesModel extends Model
         'price',
         'b_id',
     ];
+
+    public function getInfo($id) {
+
+        $query = "select price, duration from services where id = '" . $id . "'";
+
+        return $this->db->query($query)->getRowArray();
+
+    }
 }

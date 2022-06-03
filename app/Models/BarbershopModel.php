@@ -54,5 +54,11 @@ class BarbershopModel extends Model{
 
     }
 
+    public function getAllAppointments($id,$date) {
+
+        $completeAppointments = $this->db->query("select * from appointments where b_id = " . $id . " and date = '" . $date . "'");
+
+        return $completeAppointments->getResultArray();
+    }
 
 }

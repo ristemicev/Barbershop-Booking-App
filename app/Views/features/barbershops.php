@@ -7,7 +7,7 @@
         <div class="card card-sm">
             <div class="card-body row no-gutters align-items-center">
                 <div class="col-auto">
-                    <i class="fa fa-search h4 text-body"></i>
+                    <i class="fa fa-magnifying-glass fa-xl"></i>
                 </div>
                 <!--end of col-->
                 <div class="col">
@@ -16,7 +16,7 @@
                 </div>
                 <!--end of col-->
                 <div class="col-auto">
-                    <button class="btn btn-lg btn-success" id="searchbutton" type="submit">Search</button>
+                    <button class="btn btn-lg btn-primary" id="searchbutton" type="submit">Search</button>
                 </div>
                 <!--end of col-->
             </div>
@@ -27,15 +27,15 @@
 
 <?php foreach ($barbershops['result1'] as $barbershop) : ?>
     <div class="container text-center">
-        <a class="row" href="specific/<?php echo $barbershop['id']?>">
+        <a class="row" href="specific/<?php echo $barbershop['id'] ?>">
             <div class="col-sm ">
-             <?php foreach ($barbershops['result2'] as $image) : ?>
+                <?php foreach ($barbershops['result2'] as $image) : ?>
 
-                <?php if ($barbershop['id'] == $image['b_id']) : ?>
-                    <img src="/uploads/<?php echo $image['name']?>" class="img-fluid" height="200" width="200">
-                 <?php else: ?>
-                    <img src="/uploads/no_image.png" class="img-fluid" height="200" width="200">
-                 <?php endif; ?>
+                    <?php if ($barbershop['id'] == $image['b_id']) : ?>
+                        <img src="/uploads/<?php echo $image['name'] ?>" class="img-fluid" height="200" width="200">
+                    <?php else: ?>
+                        <img src="/uploads/no_image.png" class="img-fluid" height="200" width="200">
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </div>
             <div class="col-sm">

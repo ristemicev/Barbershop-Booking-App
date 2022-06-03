@@ -15,25 +15,24 @@
 <body>
 <!-- HEADER: MENU + HEROE SECTION -->
 <header>
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a href="http://localhost:8080/home" class="navbar-brand">Brand</a>
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <a href="http://localhost:8080/home" class="navbar-brand navbar-dark navbar_elements">Brand</a>
+            <button type="button" class="navbar-toggler navbar-dark" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto">
-                    <a href="http://localhost:8080/barbershops" class="nav-item nav-link">Barbershops</a>
+                    <a href="http://localhost:8080/barbershops" class="nav-item nav-link navbar_elements">Barbershops</a>
                     <?php
                     if (session()->get('isLoggedIn') == FALSE)
-                        echo '<a href="http://localhost:8080/login" class="nav-item nav-link">Login</a>
-                              <a href="http://localhost:8080/register" class="nav-item nav-link">Register</a>';
+                        echo '<a href="http://localhost:8080/login" class="nav-item nav-link navbar_elements">Login</a>
+                              <a href="http://localhost:8080/register" class="nav-item nav-link navbar_elements">Register</a>';
                     else {
                         if (session()->get('type') === 'b') {
-                            echo '<a href="http://localhost:8080/profile" class="nav-item nav-link">Profile</a>';
+                            echo '<a href="http://localhost:8080/profile" class="nav-item nav-link navbar_elements">Profile</a>';
                         }
-                        echo '<a href="" id="logout" class="nav-item nav-link">Logout</a>';
+                        echo '<a href="" id="logout" class="nav-item nav-link navbar_elements">Logout</a>';
                     }
                     ?>
                 </div>

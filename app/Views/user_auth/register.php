@@ -9,7 +9,7 @@
             <div class="register__input_form font_poppins mb-4">
                 Sign up as<br>
                 <div class="form-group mb-1 mt-1 p-2 transparent_bg_box radio_box d-flex flex-row ">
-                    <div class="">
+                    <div class="mx-1">
                         <input class="form-check-input" type="radio" name="flexRadioDefault1" value="user" id="rb1" checked onchange="hideA(this)">
                         <label class="form-check-label font_poppins" for="flexRadioDefault1">
                             User

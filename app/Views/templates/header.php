@@ -18,7 +18,9 @@
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a href="http://localhost:8080/home" class="navbar-brand navbar-dark navbar_elements">Brand</a>
+                <a href="http://localhost:8080/home" class="navbar-brand navbar-dark navbar_elements">
+                    <img src="http://localhost:8080/logo_transperent.png" alt="Brand" width="150px" height="">
+                </a>
                 <button type="button" class="navbar-toggler navbar-dark" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>

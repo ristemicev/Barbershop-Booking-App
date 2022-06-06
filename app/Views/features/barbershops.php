@@ -26,9 +26,9 @@
             <div class="">
                 <?php foreach ($barbershops['result2'] as $image) : ?>
                     <?php if ($barbershop['id'] == $image['b_id']) : ?>
-                        <img src="/uploads/<?php echo $image['name'] ?>" class="img-fluid" height="160" width="240">
+                        <img src="/uploads/<?php echo $image['name'] ?>" class="img-fluid" height="auto" width="240">
                     <?php else : ?>
-                        <img src="/uploads/no_image.png" class="img-fluid" height="160" width="240">
+                        <!-- <img src="/uploads/no_image.png" class="img-fluid" height="160" width="240"> -->
                     <?php endif; ?>
                 <?php endforeach; ?>
             </div>
